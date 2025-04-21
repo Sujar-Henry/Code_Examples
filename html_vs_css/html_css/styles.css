@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.container {
+    width: 100%;
+    max-width: 360px;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    perspective: 1000px;
+}
+
+.form-box {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3),
+                inset 0 0 15px rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    transform-style: preserve-3d;
+    animation: formEntrance 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    opacity: 0;
+    transform: rotateX(20deg) translateY(100px);
+}
+
+@keyframes formEntrance {
+    0% {
+        opacity: 0;
+        transform: rotateX(20deg) translateY(100px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg) translateY(0);
+    }
+}
+
+h2 {
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: glow 2s infinite alternate;
+    font-size: 24px;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    }
+}
+
+p {
+    color: rgba(255, 215, 0, 0.7);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+    transform: translateZ(10px);
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 15px;
+    color: #ffd700;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    outline: none;
+    transition: 0.3s;
+    z-index: 1;
+    position: relative;
+}
+
+.input-field:focus {
+    border-bottom-color: transparent;
+}
+
+.glow-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.5), 
+        #ffd700, 
+        rgba(255, 215, 0, 0.5), 
+        transparent);
+    transition: 0.4s;
+    z-index: 0;
+}
+
+.input-field:focus ~ .glow-line {
+    width: 100%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.input-group label {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    color: rgba(255, 215, 0, 0.7);
+    font-size: 15px;
+    pointer-events: none;
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.input-field:focus ~ label,
+.input-field:valid ~ label {
+    top: -12px;
+    font-size: 12px;
+    color: #ffd700;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+}
+
+.remember input {
+    margin-right: 5px;
+    accent-color: #ffd700;
+}
+
+.remember label, .forgot {
+    color: rgba(255, 215, 0, 0.8);
+    font-size: 13px;
+}
+
+.forgot {
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+}
+
+.forgot:hover {
+    color: #ffd700;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.forgot::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #ffd700;
+    transition: 0.3s;
+}
+
+.forgot:hover::after {
+    width: 100%;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px 0;
+    background: #000;
+    border: 1px solid #ffd700;
+    border-radius: 25px;
+    color: #ffd700;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(20px);
+    font-family: 'Cinzel', serif;
+    margin-bottom: 10px;
+}
+
+.login-btn span {
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+}
+
+.btn-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.2), 
+        rgba(255, 215, 0, 0.3), 
+        rgba(255, 215, 0, 0.2), 
+        transparent);
+    transition: 0.5s;
+}
+
+.login-btn:hover .btn-glow {
+    left: 100%;
+}
+
+.login-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5),
+                inset 0 0 10px rgba(255, 215, 0, 0.3);
+    transform: translateZ(20px) scale(1.05);
+}
+
+.login-btn:hover span {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+}
+
+.login-btn:active {
+    transform: translateZ(20px) scale(0.98);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: rgba(255, 215, 0, 0.7);
+    font-size: 13px;
+}
+
+.signup-link a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+}
+
+.signup-link a:hover {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+}
+
+.signup-link a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #ffd700;
+    transition: 0.3s;
+}
+
+.signup-link a:hover::after {
+    width: 100%;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .form-box {
+        padding: 25px 20px;
+    }
+}
+
+/* 3D hover effect for the entire form */
+.form-box:hover {
+    transform: rotateX(5deg) rotateY(5deg);
+    transition: transform 0.5s ease;
+}
+
+/* Additional animations for form elements */
+.input-group, .remember-forgot, .login-btn, .signup-link {
+    animation: fadeInUp 0.5s forwards;
+    opacity: 0;
+}
+
+.input-group:nth-child(1) {
+    animation-delay: 0.6s;
+}
+
+.input-group:nth-child(2) {
+    animation-delay: 0.8s;
+}
+
+.remember-forgot {
+    animation-delay: 1s;
+}
+
+.login-btn {
+    animation-delay: 1.2s;
+}
+
+.signup-link {
+    animation-delay: 1.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
