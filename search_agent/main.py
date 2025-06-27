@@ -10,7 +10,7 @@ from langgraph.graph import StateGraph, START
 from langgraph.graph.message import add_messages
 
 search = DuckDuckGoSearchRun()
-llm = ChatOllama(model = "wizardlm2")
+llm = ChatOllama(model = "llama3.1")
 
 class State(TypedDict):
     messages: Annotated[list, add_messages]
